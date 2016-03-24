@@ -50,9 +50,11 @@ public class CreateUserResource {
 
         AuthorizationToken token = new AuthorizationToken(
                 org.bson.types.ObjectId.get().toString(),
+                request.getAppName(),
                 request.getName(),
                 request.getEmail(),
                 request.getOrganisation(),
+                request.getPSMA(),
                 bearerTokenGenerationService.newToken()
         );
 
@@ -67,19 +69,23 @@ public class CreateUserResource {
     public CompleteView createUserFromForm(
             @Auth String user,
             @FormParam("email") String email,
+            @FormParam("appName") String appName,
             @FormParam("name") String name,
-            @FormParam("organisation") String organisation
+            @FormParam("organisation") String organisation,
+            @FormParam("psma") String psma
     ) throws Exception {
-        CreateUserRequest request = new CreateUserRequest(name, email, organisation);
+        CreateUserRequest request = new CreateUserRequest(appName, name, email, organisation, psma);
 
         List<String> errors = validateRequest(request);
 
         if (errors.size() == 0) {
             AuthorizationToken token = new AuthorizationToken(
                     org.bson.types.ObjectId.get().toString(),
+                    request.getAppName(),
                     request.getName(),
                     request.getEmail(),
                     request.getOrganisation(),
+                    request.getPSMA(),
                     bearerTokenGenerationService.newToken()
             );
             createUser(token);

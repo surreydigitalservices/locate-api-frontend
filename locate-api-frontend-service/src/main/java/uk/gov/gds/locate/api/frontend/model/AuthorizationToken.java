@@ -9,6 +9,9 @@ public class AuthorizationToken {
     @ObjectId
     private String id;
 
+    @JsonProperty("appName")
+    private String appName;
+
     @JsonProperty("name")
     private String name;
 
@@ -18,22 +21,31 @@ public class AuthorizationToken {
     @JsonProperty("organisation")
     private String organisation;
 
+    @JsonProperty("psma")
+    private String psma;
+
     @JsonProperty("token")
     private String token;
 
     public AuthorizationToken() {
     }
 
-    public AuthorizationToken(String id, String name, String identifier, String organisation, String token) {
+    public AuthorizationToken(String id, String appName, String name, String identifier, String organisation, String psma, String token) {
         this.id = id;
+        this.appName = appName;
         this.name = name;
         this.identifier = identifier;
         this.organisation = organisation;
+        this.psma = psma;
         this.token = token;
     }
 
     public String getId() {
         return id;
+    }
+
+    public String getAppName() {
+        return appName;
     }
 
     public String getName() {
@@ -48,6 +60,10 @@ public class AuthorizationToken {
         return organisation;
     }
 
+    public String getPSMA() {
+        return psma;
+    }
+
     public String getToken() {
         return token;
     }
@@ -56,9 +72,11 @@ public class AuthorizationToken {
     public String toString() {
         return "AuthorizationToken{" +
                 "id='" + id + '\'' +
+                ", appName='" + appName + '\'' +
                 ", name='" + name + '\'' +
                 ", identifier='" + identifier + '\'' +
                 ", organisation='" + organisation + '\'' +
+                ", psma='" + psma + '\'' +
                 ", token='" + token + '\'' +
                 '}';
     }

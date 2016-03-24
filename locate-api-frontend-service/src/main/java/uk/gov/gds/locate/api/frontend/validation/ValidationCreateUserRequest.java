@@ -10,12 +10,18 @@ import java.util.List;
 public abstract class ValidationCreateUserRequest {
 
     public static final int MAX_LENGTH = 255;
+    public static final String APP_NAME_ERROR = "Application name must be present and shorter than 255 letters";
     public static final String NAME_ERROR = "Name must be present and shorter than 255 letters";
     public static final String ORGANISATION_ERROR = "Organisation must be present and shorter than 255 letters";
     public static final String EMAIL_ERROR = "Email must be a valid government address";
+    public static final String PSMA_ERROR = "PSMA license number must be valid";
 
     public static List<String> validateRequest(CreateUserRequest request) {
         List<String> errors = new ArrayList<String>();
+
+        if (Strings.isNullOrEmpty(request.getAppName()) || request.getAppName().length() > MAX_LENGTH) {
+            errors.add(APP_NAME_ERROR);
+        }
 
         if (Strings.isNullOrEmpty(request.getName()) || request.getName().length() > MAX_LENGTH) {
             errors.add(NAME_ERROR);
@@ -27,6 +33,10 @@ public abstract class ValidationCreateUserRequest {
 
         if (Strings.isNullOrEmpty(request.getOrganisation()) || request.getOrganisation().length() > MAX_LENGTH) {
             errors.add(ORGANISATION_ERROR);
+        }
+
+        if (Strings.isNullOrEmpty(request.getPSMA()) || request.getPSMA().length() > MAX_LENGTH) {
+            errors.add(PSMA_ERROR);
         }
 
         return errors;

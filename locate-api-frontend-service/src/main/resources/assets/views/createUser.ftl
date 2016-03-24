@@ -18,24 +18,33 @@
         <p>We need a few details in order to generate your very own API token.</p>
         <form action="/locate/create-user" method="POST">
         <fieldset>
+            <label for="appName">
+                Application name
+            </label>
+            <input id="appName" name="appName" value="" autocomplete="off" class="text long" type="text">
+
             <label for="name">
                 Name
             </label>
-
             <input id="name" name="name" value="" autocomplete="off" class="text first-name long" type="text">
 
             <label for="email">
                 Email
             </label>
-
             <input id="email" name="email" value="" autocomplete="off" class="text email long" type="text">
 
             <label for="organisation">
                 Organisation
             </label>
-
             <input id="organisation" name="organisation" value="" autocomplete="off" class="text first-name long"
                    type="text">
+
+            <label for="psma">
+                PSMA license number
+            </label>
+            <input id="psma" name="psma" value="" autocomplete="off" class="text long"
+                   type="text">
+
         </fieldset>
         <hr/>
 

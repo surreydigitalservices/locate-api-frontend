@@ -99,9 +99,11 @@
         }
 
          var request = {
+            "appName": $('#appName').val(),
             "name": $('#name').val(),
             "email": $('#email').val(),
-            "organisation": $('#organisation').val()
+            "organisation": $('#organisation').val(),
+            "psma": $('#psma').val()
         };
 
         $.ajax({
